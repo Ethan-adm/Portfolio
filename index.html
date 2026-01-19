@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEST DEBUG - Ethan Georget</title>
+    <meta name="description" content="Portfolio d'Ethan Georget - Administrateur Réseaux & Cybersécurité">
+    <title>Ethan Georget | Portfolio</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- ESTHÉTIQUE GÉNÉRALE --- */
+        /* --- ESTHÉTIQUE GÉNÉRALE (RETOUR AU DESIGN PRO) --- */
         :root {
-            --primary: #2563eb;
-            --dark: #0f172a;
-            /* CHANGEMENT ICI : FOND ROUGE POUR TEST */
-            --light: #ff0000; 
-            --text: #334155;
-            --accent: #0ea5e9;
+            --primary: #2563eb; /* Bleu roi */
+            --dark: #0f172a;    /* Bleu nuit très sombre */
+            --light: #f8fafc;   /* Blanc cassé */
+            --text: #334155;    /* Gris texte */
+            --accent: #0ea5e9;  /* Bleu clair */
         }
 
         html { scroll-behavior: smooth; }
@@ -25,14 +25,10 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            /* FOND ROUGE FORCÉ ICI */
-            background-color: red; 
+            background-color: var(--light);
             color: var(--text);
             line-height: 1.6;
         }
-
-        /* J'ai mis des fonds blancs sur les sections pour que le texte reste lisible malgré le fond rouge */
-        section { padding: 80px 10%; background-color: white; margin: 20px; border-radius: 20px; }
 
         h1, h2, h3 { color: var(--dark); margin: 0; }
         a { text-decoration: none; transition: 0.3s; }
@@ -50,6 +46,7 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
         }
 
         .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
@@ -60,12 +57,12 @@
             font-weight: 500;
             font-size: 0.95rem;
         }
+        .nav-links a:hover { color: var(--primary); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (Entête) --- */
         .hero {
             height: 100vh;
-            /* Fond rouge aussi ici pour être sûr */
-            background: red; 
+            background: linear-gradient(135deg, var(--dark) 0%, #1e3a8a 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -75,38 +72,160 @@
         }
 
         .hero h1 { font-size: 3.5rem; color: white; margin-bottom: 10px; }
-        .hero h2 { font-size: 1.5rem; font-weight: 300; color: white; margin-bottom: 30px; }
+        .hero h2 { font-size: 1.5rem; font-weight: 300; color: #cbd5e1; margin-bottom: 30px; }
+        .hero .highlight { color: var(--accent); font-weight: 700; }
         
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            background: white;
-            color: red;
+            background: var(--primary);
+            color: white;
             border-radius: 50px;
             font-weight: 600;
             margin: 5px;
-            border: 2px solid white;
+            border: 2px solid var(--primary);
         }
-        .btn-outline { background: transparent; border: 2px solid white; color: white;}
+        .btn:hover { background: transparent; color: white; }
+        .btn-outline { background: transparent; border: 2px solid white; }
+        .btn-outline:hover { background: white; color: var(--primary); }
 
-        /* --- ELEMENTS --- */
+        /* --- SECTIONS STANDARDS --- */
+        section { padding: 80px 10%; }
         .section-title {
             text-align: center;
             font-size: 2.2rem;
             margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
         }
 
-        .skills-grid, .projects-grid {
+        /* --- PROFIL --- */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .about-text { flex: 1; min-width: 300px; font-size: 1.1rem; }
+        .about-img { 
+            width: 250px; 
+            height: 250px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+            border: 5px solid white;
+            background-color: #eee;
+        }
+
+        /* --- COMPÉTENCES (Grille) --- */
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-        
-        .skill-card, .project-card, .timeline-item {
-            border: 2px solid red; /* Bordure rouge pour voir les blocs */
-            padding: 20px;
-            border-radius: 10px;
+        .skill-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s;
         }
+        .skill-card:hover { transform: translateY(-5px); }
+        .skill-icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .skill-list li { margin-bottom: 10px; display: flex; align-items: center; }
+        .skill-list i { color: var(--accent); margin-right: 10px; font-size: 0.8rem; }
+
+        /* --- PARCOURS (Expérience) --- */
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #e2e8f0;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            margin-left: -2px;
+        }
+        .timeline-item {
+            padding: 10px 40px 10px 50px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: auto;
+            left: 10px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .content-box {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .date { color: var(--accent); font-weight: 700; font-size: 0.9rem; letter-spacing: 1px;}
+        .job-title { font-size: 1.2rem; font-weight: 700; margin: 5px 0; }
+        .company { font-style: italic; color: #64748b; margin-bottom: 15px; display: block; }
+
+        /* --- PROJETS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .project-content { padding: 25px; flex: 1; display: flex; flex-direction: column; }
+        .tags { margin: 15px 0; }
+        .tag {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        .btn-small {
+            margin-top: auto;
+            align-self: flex-start;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .btn-small:hover { color: var(--dark); text-decoration: underline; }
 
         /* --- FOOTER --- */
         footer {
@@ -115,53 +234,233 @@
             text-align: center;
             padding: 50px 0;
         }
-        .social-icons a { color: white; font-size: 1.8rem; margin: 0 15px; }
+        .social-icons a {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+        .social-icons a:hover { color: var(--accent); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .about-content { text-align: center; justify-content: center; }
+            .timeline::after { left: 20px; }
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">ETHAN GEORGET (MODE TEST)</div>
+        <div class="logo">ETHAN GEORGET</div>
         <div class="nav-links">
+            <a href="#about">Profil</a>
+            <a href="#skills">Compétences</a>
             <a href="#projects">Projets</a>
+            <a href="#experience">Parcours</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <h1>SI LE FOND EST ROUGE</h1>
-            <h2>C'est que le code fonctionne !</h2>
-            <br>
-            <p>👇 TESTE CE BOUTON POUR VOIR SI TON CV S'OUVRE 👇</p>
-            <a href="assets/cv.pdf" target="_blank" class="btn">OUVRIR MON CV.PDF</a>
+            <h1>Ethan Georget</h1>
+            <h2>Futur <span class="highlight">Administrateur Réseaux & Cybersécurité</span></h2>
+            <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9;">
+                Étudiant en BTS SIO option SISR | Recherche d'alternance pour <strong>Septembre 2025</strong>
+            </p>
+            <a href="#projects" class="btn">Voir mes projets</a>
+            
+            <a href="assets/cv.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-download"></i> Mon CV</a>
         </div>
     </header>
 
-    <section id="projects">
-        <h2 class="section-title">Test des Liens PDF</h2>
-        <div class="projects-grid">
+    <section id="about">
+        <div class="about-content">
+            <img src="https://via.placeholder.com/250x250.png?text=Ethan" alt="Ethan Georget" class="about-img">
+            <div class="about-text">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">À Propos de moi</h2>
+                <p>
+                    Passionné par l'informatique depuis le collège, j'ai orienté mes études vers l'administration des systèmes et des réseaux.
+                    Après un <strong>Bac Pro SN (Systèmes Numériques)</strong> obtenu avec mention, je poursuis actuellement en <strong>BTS SIO</strong> option SISR (Solutions d'Infrastructure, Systèmes et Réseaux).
+                </p>
+                <p>
+                    Curieux et technique, j'aime comprendre comment fonctionnent les infrastructures complexes. J'ai déjà acquis une expérience précieuse grâce à mes stages à la <strong>Mairie de Meaux</strong> et à l'<strong>IFAC</strong>, où j'ai pu travailler sur des environnements réels (VLANs, Active Directory, Supervision).
+                </p>
+                <p style="margin-top: 20px; border-left: 4px solid var(--primary); padding-left: 15px; background: #eef2ff; padding: 15px;">
+                    <strong>Objectif :</strong> Je recherche une entreprise pour une <strong>alternance</strong> (contrat d'apprentissage) à partir de septembre 2025, pour mettre mes compétences au service de votre sécurité et de votre infrastructure.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" style="background-color: white;">
+        <h2 class="section-title">Compétences Techniques</h2>
+        <div class="skills-grid">
             
-            <div class="project-card">
-                <h3>Projet JO 2024</h3>
-                <p>Doit ouvrir : assets/projet_jo.pdf</p>
-                <a href="assets/projet_jo.pdf" target="_blank" style="color:red; font-weight:bold;">CLIQUE ICI POUR TESTER</a>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
+                <h3>Réseau & Infrastructure</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> Configuration Switchs (Cisco SG300)</li>
+                    <li><i class="fas fa-check"></i> VLANs (Data, Voice, Admin)</li>
+                    <li><i class="fas fa-check"></i> Protocoles (TCP/IP, DHCP, DNS, SNMP)</li>
+                    <li><i class="fas fa-check"></i> Wireshark (Analyse de trafic)</li>
+                    <li><i class="fas fa-check"></i> Câblage et brassage physique</li>
+                </ul>
             </div>
 
-            <div class="project-card">
-                <h3>Rapport IFAC</h3>
-                <p>Doit ouvrir : assets/rapport_ifac.pdf</p>
-                <a href="assets/rapport_ifac.pdf" target="_blank" style="color:red; font-weight:bold;">CLIQUE ICI POUR TESTER</a>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-server"></i></div>
+                <h3>Administration Système</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> Windows Server 2016/2019</li>
+                    <li><i class="fas fa-check"></i> Active Directory (GPO, Utilisateurs)</li>
+                    <li><i class="fas fa-check"></i> Virtualisation (VirtualBox, VMware)</li>
+                    <li><i class="fas fa-check"></i> Migration & Gestion Office 365</li>
+                    <li><i class="fas fa-check"></i> Déploiement de postes</li>
+                </ul>
             </div>
 
-            <div class="project-card">
-                <h3>Rapport Meaux</h3>
-                <p>Doit ouvrir : assets/rapport_meaux.pdf</p>
-                <a href="assets/rapport_meaux.pdf" target="_blank" style="color:red; font-weight:bold;">CLIQUE ICI POUR TESTER</a>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-tools"></i></div>
+                <h3>Supervision & Outils</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> Eyes Of Network (EON)</li>
+                    <li><i class="fas fa-check"></i> Nagios / Centreon</li>
+                    <li><i class="fas fa-check"></i> Grafana (Dashboards)</li>
+                    <li><i class="fas fa-check"></i> Ticketing (GLPI)</li>
+                    <li><i class="fas fa-check"></i> Packet Tracer (Simulation)</li>
+                </ul>
             </div>
 
         </div>
     </section>
+
+    <section id="projects">
+        <h2 class="section-title">Projets & Réalisations</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-content">
+                    <h3><i class="fas fa-project-diagram"></i> Infrastructure "JO 2024"</h3>
+                    <p>Conception complète d'une infrastructure réseau sécurisée pour un site olympique fictif.</p>
+                    <div class="tags">
+                        <span class="tag">Cisco Packet Tracer</span>
+                        <span class="tag">VLAN/VTP</span>
+                        <span class="tag">Sécurité (ACL)</span>
+                        <span class="tag">802.3ad</span>
+                    </div>
+                    <p><em>Points clés : Segmentation réseau, Routage inter-VLAN, Agrégation de liens.</em></p>
+                    <a href="assets/projet_jo.pdf" target="_blank" class="btn-small">Voir le dossier technique <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3><i class="fas fa-book-open"></i> Veille Juridique : IA & Éthique</h3>
+                    <p>Analyse des enjeux juridiques et éthiques liés à l'intelligence artificielle (RGPD, AI Act).</p>
+                    <div class="tags">
+                        <span class="tag">Veille Techno</span>
+                        <span class="tag">Droit</span>
+                        <span class="tag">RGPD</span>
+                    </div>
+                    <p><em>Sujet : "Les limites juridiques et éthiques imposées aux IA".</em></p>
+                    <a href="assets/veille_ia.pdf" target="_blank" class="btn-small">Lire la synthèse <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3><i class="fas fa-city"></i> Rapport de Stage - Mairie de Meaux</h3>
+                    <p>Immersion au sein de la DSI d'une grande collectivité territoriale.</p>
+                    <div class="tags">
+                        <span class="tag">Active Directory</span>
+                        <span class="tag">Supervision</span>
+                        <span class="tag">Migration O365</span>
+                    </div>
+                    <p><em>Réalisations : Création de comptes, mise en place de sondes Nagios, support utilisateur.</em></p>
+                    <a href="assets/rapport_meaux.pdf" target="_blank" class="btn-small">Lire le rapport <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="experience" style="background-color: white;">
+        <h2 class="section-title">Mon Parcours</h2>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <div class="content-box">
+                    <span class="date">OCT 2023 - FÉV 2024</span>
+                    <h3 class="job-title">Stagiaire Technicien Informatique</h3>
+                    <span class="company">Association IFAC (92)</span>
+                    <p>Intervention technique sur l'infrastructure du siège.</p>
+                    <ul>
+                        <li>• Installation et configuration de switchs <strong>Cisco SG300-28PP</strong> (VLANs Voice/Data).</li>
+                        <li>• Résolution de conflits d'adressage IP et brassage de baies.</li>
+                        <li>• Démantèlement d'équipements obsolètes (PABX).</li>
+                    </ul>
+                    <br>
+                    <a href="assets/rapport_ifac.pdf" target="_blank" style="color:var(--primary); font-size:0.9rem;"> Voir le rapport de stage <i class="fas fa-file-pdf"></i></a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content-box">
+                    <span class="date">OCT 2022 - JUIN 2023</span>
+                    <h3 class="job-title">Stagiaire DSI</h3>
+                    <span class="company">Mairie de Meaux (77)</span>
+                    <p>Gestion quotidienne du parc et des utilisateurs.</p>
+                    <ul>
+                        <li>• Administration <strong>Active Directory</strong> (Création utilisateurs, droits).</li>
+                        <li>• Synchronisation et migration de boîtes mail vers <strong>Office 365</strong>.</li>
+                        <li>• Supervision des serveurs via <strong>Eyes Of Network (Nagios/Centreon)</strong>.</li>
+                        <li>• Installation du service SNMP sur serveurs Windows.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content-box">
+                    <span class="date">2024 - PRÉSENT</span>
+                    <h3 class="job-title">BTS SIO - Option SISR</h3>
+                    <span class="company">Lycée René Descartes (Champs-sur-Marne)</span>
+                    <p>Solutions d'Infrastructure, Systèmes et Réseaux. (En cours)</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content-box">
+                    <span class="date">2021 - 2024</span>
+                    <h3 class="job-title">BAC PRO SN - Option RISC</h3>
+                    <span class="company">Lycée Saint-Aspais (Melun)</span>
+                    <p>Réseaux Informatiques et Systèmes Communicants. <strong>Obtenu avec Mention Bien.</strong></p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2 style="color: white; margin-bottom: 20px;">Me Contacter</h2>
+        <p style="color: #cbd5e1; margin-bottom: 30px;">
+            Actuellement à la recherche d'une alternance. N'hésitez pas à me contacter !
+        </p>
+        
+        <div class="social-icons">
+            <a href="mailto:georgetethan@gmail.com"><i class="fas fa-envelope"></i></a>
+            
+            <a href="https://www.linkedin.com/in/ethan-georget" target="_blank"><i class="fab fa-linkedin"></i></a>
+            
+            <a href="https://github.com/ethan-adm" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+        
+        <p style="margin-top: 40px; font-size: 0.8rem; color: #64748b;">&copy; 2026 Ethan Georget - Tous droits réservés.</p>
+    </footer>
 
 </body>
 </html>

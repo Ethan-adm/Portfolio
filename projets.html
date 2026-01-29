@@ -10,11 +10,38 @@
         :root { --primary: #2563eb; --dark: #0f172a; --light: #f8fafc; --text: #334155; }
         body { font-family: 'Poppins', sans-serif; margin: 0; padding: 40px; background: var(--light); color: var(--text); }
         .container { max-width: 800px; margin: 0 auto; }
+        
+        /* Bouton retour */
         .back-btn { display: inline-block; margin-bottom: 30px; color: var(--primary); text-decoration: none; font-weight: bold; }
-        h1 { margin-bottom: 30px; color: var(--dark); }
-        .item { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--primary); }
+        .back-btn:hover { text-decoration: underline; }
+
+        h1 { margin-bottom: 40px; color: var(--dark); text-align: center; }
+        
+        /* Style des titres de catégories (BTS / Lycée) */
+        .category-title {
+            color: var(--primary);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        /* Style des cartes projets */
+        .item { 
+            background: white; padding: 25px; border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; 
+            display: flex; justify-content: space-between; align-items: center; 
+            border-left: 5px solid var(--primary); 
+            transition: transform 0.2s;
+        }
+        .item:hover { transform: translateX(5px); }
+
         .btn-dl { background: var(--primary); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; }
         .btn-dl:hover { background: var(--dark); }
+        
+        .project-desc { margin: 0; font-size: 0.9rem; color: #64748b; }
+        .project-title { margin: 0 0 5px 0; color: var(--dark); }
     </style>
 </head>
 <body>
@@ -22,14 +49,26 @@
         <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
         <h1><i class="fas fa-graduation-cap"></i> Mes Projets Scolaires</h1>
 
+        <h2 class="category-title"><i class="fas fa-folder-open"></i> BTS SIO (En cours)</h2>
+
         <div class="item">
             <div>
-                <h3 style="margin:0 0 5px 0;">Infrastructure "JO 2024"</h3>
-                <p style="margin:0; font-size:0.9rem;">Conception réseau complète sur Packet Tracer.</p>
+                <h3 class="project-title">Projet Veille Technologique</h3>
+                <p class="project-desc">Sujet : Les limites juridiques des IA.</p>
+            </div>
+            <a href="assets/veille_ia.pdf" target="_blank" class="btn-dl">Voir le PDF</a>
+        </div>
+
+        <h2 class="category-title"><i class="fas fa-folder"></i> Lycée (Bac Pro SN)</h2>
+
+        <div class="item">
+            <div>
+                <h3 class="project-title">Mini Projet Terminal</h3>
+                <p class="project-desc">Analyse et installation d'un système numérique (S.N. R.I.S.C).</p>
             </div>
             <a href="assets/projet_jo.pdf" target="_blank" class="btn-dl">Voir le PDF</a>
         </div>
 
-    </div>
+        </div>
 </body>
 </html>

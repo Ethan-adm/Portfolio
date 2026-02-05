@@ -17,31 +17,46 @@
 
         h1 { margin-bottom: 40px; color: var(--dark); text-align: center; }
         
-        /* Style des titres de catégories (BTS / Lycée) */
+        /* Titres des grandes sections */
         .category-title {
-            color: var(--primary);
-            border-bottom: 2px solid #e2e8f0;
+            color: var(--dark);
+            border-bottom: 3px solid #2563eb;
             padding-bottom: 10px;
-            margin-top: 50px;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Titres des Sous-Dossiers (AP, B2, B3) */
+        .sub-folder {
+            color: #2563eb;
+            font-size: 1.3rem;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* Style des cartes projets */
         .item { 
-            background: white; padding: 25px; border-radius: 10px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; 
+            background: white; padding: 20px; border-radius: 8px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 15px; 
             display: flex; justify-content: space-between; align-items: center; 
-            border-left: 5px solid var(--primary); 
-            transition: transform 0.2s;
+            border-left: 4px solid var(--primary); 
+            margin-left: 20px; /* Décalage pour faire effet "dans le dossier" */
         }
-        .item:hover { transform: translateX(5px); }
+        .item:hover { transform: translateX(5px); transition: 0.2s; }
 
-        .btn-dl { background: var(--primary); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; }
+        .btn-dl { background: var(--primary); color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
         .btn-dl:hover { background: var(--dark); }
         
         .project-desc { margin: 0; font-size: 0.9rem; color: #64748b; }
-        .project-title { margin: 0 0 5px 0; color: var(--dark); }
+        .project-title { margin: 0 0 5px 0; color: var(--dark); font-size: 1.1rem; }
+        
+        .empty-msg { margin-left: 20px; color: #999; font-style: italic; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -49,26 +64,33 @@
         <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
         <h1><i class="fas fa-graduation-cap"></i> Mes Projets Scolaires</h1>
 
-        <h2 class="category-title"><i class="fas fa-folder-open"></i> BTS SIO (En cours)</h2>
+        <h2 class="category-title">BTS SIO - Projets et TP</h2>
 
+        <h3 class="sub-folder"><i class="fas fa-folder-open"></i> AP - Ateliers de Professionnalisation</h3>
+        
         <div class="item">
             <div>
-                <h3 class="project-title">Projet Veille Technologique</h3>
-                <p class="project-desc">Sujet : Les limites juridiques des IA.</p>
+                <h3 class="project-title">Veille Technologique</h3>
+                <p class="project-desc">Sujet : Les limites juridiques et éthiques des IA.</p>
             </div>
             <a href="assets/veille_ia.pdf" target="_blank" class="btn-dl">Voir le PDF</a>
         </div>
 
-        <h2 class="category-title"><i class="fas fa-folder"></i> Lycée (Bac Pro SN)</h2>
 
-        <div class="item">
+        <h3 class="sub-folder"><i class="fas fa-folder"></i> B2 - Administration des Systèmes et Réseaux</h3>
+        <p class="empty-msg">Aucun projet ajouté pour le moment.</p>
+        <h3 class="sub-folder"><i class="fas fa-folder"></i> B3 - Cybersécurité</h3>
+        <p class="empty-msg">Aucun projet ajouté pour le moment.</p>
+        <h2 class="category-title" style="margin-top: 80px; border-color: #e11d48;">Lycée (Bac Pro SN)</h2>
+
+        <div class="item" style="border-left-color: #e11d48;">
             <div>
                 <h3 class="project-title">Mini Projet Terminal</h3>
                 <p class="project-desc">Analyse et installation d'un système numérique (S.N. R.I.S.C).</p>
             </div>
-            <a href="assets/projet_jo.pdf" target="_blank" class="btn-dl">Voir le PDF</a>
+            <a href="assets/projet_jo.pdf" target="_blank" class="btn-dl" style="background-color: #e11d48;">Voir le PDF</a>
         </div>
 
-        </div>
+    </div>
 </body>
 </html>

@@ -3,132 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Projets Scolaires - Ethan Georget</title>
+    <meta name="description" content="Portfolio d'Ethan Georget - Administrateur Réseaux & Cybersécurité">
+    <title>Ethan Georget | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        :root { --primary: #2563eb; --dark: #0f172a; --light: #f8fafc; --text: #334155; }
-        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 40px; background: var(--light); color: var(--text); }
-        .container { max-width: 900px; margin: 0 auto; }
-        
-        .back-btn { display: inline-block; margin-bottom: 30px; color: var(--primary); text-decoration: none; font-weight: bold; }
-        .back-btn:hover { text-decoration: underline; }
+        /* --- ESTHÉTIQUE GÉNÉRALE --- */
+        :root {
+            --primary: #2563eb; --dark: #0f172a; --light: #f8fafc; --text: #334155; --accent: #0ea5e9;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: var(--light); color: var(--text); line-height: 1.6;
+        }
+        h1, h2, h3 { color: var(--dark); margin: 0; }
+        a { text-decoration: none; transition: 0.3s; }
+        ul { list-style: none; padding: 0; }
 
-        h1 { margin-bottom: 40px; color: var(--dark); text-align: center; }
+        /* --- NAVIGATION --- */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95); padding: 1rem 5%; position: fixed; width: 90%; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05); backdrop-filter: blur(10px);
+        }
+        .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary); }
+        .nav-links a { margin-left: 2rem; color: var(--text); font-weight: 500; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh; background: linear-gradient(135deg, var(--dark) 0%, #1e3a8a 100%);
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px;
+        }
+        .hero h1 { font-size: 3.5rem; color: white; margin-bottom: 10px; }
+        .hero h2 { font-size: 1.5rem; font-weight: 300; color: #cbd5e1; margin-bottom: 30px; }
+        .hero .highlight { color: var(--accent); font-weight: 700; }
         
-        .category-title {
-            color: var(--dark);
-            border-bottom: 3px solid #2563eb;
-            padding-bottom: 10px;
-            margin-top: 60px;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .btn {
+            display: inline-block; padding: 12px 30px; background: var(--primary); color: white;
+            border-radius: 50px; font-weight: 600; margin: 5px; border: 2px solid var(--primary);
+        }
+        .btn:hover { background: transparent; color: white; }
+        .btn-outline { background: transparent; border: 2px solid white; }
+        .btn-outline:hover { background: white; color: var(--primary); }
+
+        /* --- SECTIONS STANDARDS --- */
+        section { padding: 80px 10%; }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--primary); border-radius: 2px;
         }
 
-        .sub-folder {
-            color: #2563eb;
-            background: #e0f2fe;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* --- PROFIL --- */
+        .about-content { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+        .about-text { flex: 1; min-width: 300px; font-size: 1.1rem; }
+        .about-img { 
+            width: 250px; height: 250px; border-radius: 50%; 
+            object-fit: cover; box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2); 
+            border: 5px solid white; background-color: #eee;
         }
 
-        .item { 
-            background: white; padding: 15px 20px; border-radius: 8px; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 10px; 
-            display: flex; justify-content: space-between; align-items: center; 
-            border-left: 4px solid var(--primary); 
-            margin-left: 20px; 
-            transition: transform 0.2s;
+        /* --- GRILLES --- */
+        .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .skill-card, .project-card {
+            background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary); transition: transform 0.3s;
         }
-        .item:hover { transform: translateX(5px); }
+        .skill-card:hover, .project-card:hover { transform: translateY(-5px); }
+        .skill-icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .skill-list li { margin-bottom: 10px; display: flex; align-items: center; }
+        .skill-list i { color: var(--accent); margin-right: 10px; font-size: 0.8rem; }
 
-        .btn-dl { background: var(--primary); color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 0.8rem; white-space: nowrap; }
-        .btn-dl:hover { background: var(--dark); }
-        
-        .project-title { margin: 0; color: var(--dark); font-size: 0.95rem; font-weight: 500; }
-        .project-title i { color: #64748b; margin-right: 8px; width: 20px; text-align: center; } /* Style pour aligner les petites icônes */
-        
-        .scroll-list { max-height: 500px; overflow-y: auto; padding-right: 10px; }
+        /* --- PROJETS SPECIFIQUE --- */
+        .project-content h3 { margin-bottom: 15px; }
+        .tags { margin: 15px 0; }
+        .tag { background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; margin-right: 5px; display: inline-block; margin-bottom: 5px; }
+        .btn-small { margin-top: 15px; display:inline-block; color: var(--primary); font-weight: 600; font-size: 0.9rem; }
+        .btn-small:hover { color: var(--dark); text-decoration: underline; }
+
+        /* --- TIMELINE --- */
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline::after { content: ''; position: absolute; width: 4px; background-color: #e2e8f0; top: 0; bottom: 0; left: 20px; margin-left: -2px; }
+        .timeline-item { padding: 10px 40px 10px 50px; position: relative; width: 100%; box-sizing: border-box; }
+        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; left: 10px; background-color: white; border: 4px solid var(--primary); top: 25px; border-radius: 50%; z-index: 1; }
+        .content-box { padding: 20px 30px; background-color: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .date { color: var(--accent); font-weight: 700; font-size: 0.9rem; letter-spacing: 1px;}
+        .job-title { font-size: 1.2rem; font-weight: 700; margin: 5px 0; }
+        .company { font-style: italic; color: #64748b; margin-bottom: 15px; display: block; }
+
+        /* --- FOOTER --- */
+        footer { background: var(--dark); color: white; text-align: center; padding: 50px 0; }
+        .social-icons a { color: white; font-size: 1.8rem; margin: 0 15px; transition: 0.3s; }
+        .social-icons a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .about-content { text-align: center; justify-content: center; } .timeline::after { left: 20px; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
-        <h1><i class="fas fa-graduation-cap"></i> Mes Projets Scolaires</h1>
 
-        <h2 class="category-title">BTS SIO - Projets et TP</h2>
-
-        <h3 class="sub-folder"><i class="fas fa-folder-open"></i> AP - Ateliers de Professionnalisation</h3>
-        <div class="item">
-            <h3 class="project-title"><i class="fas fa-server"></i> Déploiement Infrastructure (AP4-01)</h3>
-            <a href="assets/Ethan%20Georget%20-%20TrameCR_AP4-01_DeploiementInfra_Rev03.pdf" target="_blank" class="btn-dl">Voir le PDF</a>
+    <nav class="navbar">
+        <div class="logo">ETHAN GEORGET</div>
+        <div class="nav-links">
+            <a href="#about">Profil</a>
+            <a href="#skills">Compétences</a>
+            <a href="#projects">Projets</a>
+            <a href="#experience">Parcours</a>
+            <a href="#contact">Contact</a>
         </div>
+    </nav>
 
-
-        <h3 class="sub-folder"><i class="fas fa-server"></i> B2 - Admin. Systèmes et Réseaux</h3>
-        <div class="scroll-list">
-            <div class="item" style="border-left-color: #0ea5e9; background-color: #f0f9ff;"><h3 class="project-title" style="color: #0369a1;"><i class="fab fa-windows" style="color: #0ea5e9;"></i> Admin Windows Server 2022 (AD, GPO)</h3><a href="assets/SISR-LABO-WINDOWS.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item" style="border-left-color: #0ea5e9; background-color: #f0f9ff;"><h3 class="project-title" style="color: #0369a1;"><i class="fas fa-network-wired" style="color: #0ea5e9;"></i> Tunnels VPN IPsec & SSL (pfSense/SNS)</h3><a href="assets/VPN-SNS.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item" style="border-left-color: #0ea5e9; background-color: #f0f9ff;"><h3 class="project-title" style="color: #0369a1;"><i class="fas fa-server" style="color: #0ea5e9;"></i> Admin & Sécurisation Serveur Apache2</h3><a href="assets/LAB-APACHE-SISR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item" style="border-left-color: #0ea5e9; background-color: #f0f9ff;"><h3 class="project-title" style="color: #0369a1;"><i class="fas fa-hdd" style="color: #0ea5e9;"></i> Tolérance de panne (RAID 1 & 5)</h3><a href="assets/SISR_LABORAID.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item" style="border-left-color: #0ea5e9; background-color: #f0f9ff;"><h3 class="project-title" style="color: #0369a1;"><i class="fas fa-sync" style="color: #0ea5e9;"></i> Haute Dispo & Load-Balancing (LVS)</h3><a href="assets/LAB-B2-FAILOVER.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item" style="border-left-color: #0ea5e9; background-color: #f0f9ff;"><h3 class="project-title" style="color: #0369a1;"><i class="fas fa-copy" style="color: #0ea5e9;"></i> Réplication Données (Rsync/GlusterFS)</h3><a href="assets/LABO-LABOREPLICATION.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            
-            <div class="item"><h3 class="project-title"><i class="fas fa-exchange-alt"></i> Basic Switch Configuration (01.1.1.7)</h3><a href="assets/Ethan%20Georget%20-%2001.1.1.7-packet-tracer---basic-switch-configuration---physical-mode_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-search"></i> Physical Mode Exploration (01.1.0.5)</h3><a href="assets/Ethan%20Georget%20-%2001.TP_1.0.5-packet-tracer---logical-and-physical-mode-exploration_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-terminal"></i> Navigate IOS (01.2.3.7)</h3><a href="assets/Ethan%20Georget%20-%2001.TP_2.3.7-packet-tracer---navigate-the-ios_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-wifi"></i> Configure Wireless Network (01.13.1.10)</h3><a href="assets/Ethan%20Georget%20-%2001.TP01.13.1.10-packet-tracer---configure-a-wireless-network_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-route"></i> Router on a Stick / Inter-Vlan (02.4.2.7)</h3><a href="assets/Ethan%20Georget%20-%2002.4.2.7-packet-tracer---configure-router-on-a-stick-inter-vlan-routing_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-sitemap"></i> Determine MAC Address (03.3.2.2.4)</h3><a href="assets/Ethan%20Georget%20-%2003.3.2.2.4%20Lab%20-%20Determine%20the%20MAC%20Address%20of%20a%20Host.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-sync-alt"></i> STP Loop Prevention (03.5.1.9)</h3><a href="assets/Ethan%20Georget%20-%2003.5.1.9-packet-tracer---investigate-stp-loop-prevention_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-project-diagram"></i> Configure EtherChannel (03.6.2.4)</h3><a href="assets/Ethan%20Georget%20-%2003.6.2.4-packet-tracer---configure-etherchannel_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-sitemap"></i> Subnetting Scenario (03.11.7.5)</h3><a href="assets/Ethan%20Georget%20-%2003.11.7.5-packet-tracer---subnetting-scenario_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-wifi"></i> Configuration Lab Wifi (03.TP01)</h3><a href="assets/Ethan%20Georget%20-%2003.TP01_ConfigurationLabWifi_Rev02.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-broadcast-tower"></i> Configure Basic WLAN on WLC (03.13.2.7)</h3><a href="assets/Ethan%20Georget%20-%2003.TP13.2.7-packet-tracer---configure-a-basic-wlan-on-the-wlc_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-terminal"></i> Commandes PowerShell (04.TD01)</h3><a href="assets/Ethan%20Georget%20-%2004.TD01_CommandesPowerShell_Rev03.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-save"></i> Planification Sauvegardes PowerShell (04.TD02)</h3><a href="assets/Ethan%20Georget%20-%2004.TD02_PlanificationSauvegardesPowerShell_Rev03.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fab fa-windows"></i> Script Base Windows (04.TD03)</h3><a href="assets/Ethan%20Georget%20-%2004.TD03_ScriptBaseWindows_Rev02.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-server"></i> HSRP Configuration (04.TP9.3.3)</h3><a href="assets/Ethan%20Georget%20-%2004.TP9.3.3-packet-tracer---hsrp-configuration-guide_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-network-wired"></i> Conf Service DHCP Cisco (05.TP01)</h3><a href="assets/Ethan%20Georget%20-%2005.TP01_ConfServiceDHCP-CiscoRouteur_Rev02.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-shield-alt"></i> Test Sécurité Réseau (05.TP23.1.7)</h3><a href="assets/Ethan%20Georget%20-%2005.TP23.1.7_TestSecuriteReseau_rev02.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-lock"></i> Implement Port Security (06.11.1.10)</h3><a href="assets/Ethan%20Georget%20-%2006.TP_11.1.10-LabPT-implement-port-security_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-lock"></i> Switch Security Config (06.11.6.2)</h3><a href="assets/Ethan%20Georget%20-%2006.TP_11.6.2-lab---switch-security-configuration_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-route"></i> IPv4/IPv6 Static Routes (06.15.6.1)</h3><a href="assets/Ethan%20Georget%20-%2006.TP01_15.6.1-packet-tracer---configure-ipv4-and-ipv6-static-and-default-routes_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-network-wired"></i> Implement DHCPv4 (7.4.2)</h3><a href="assets/Ethan%20Georget%20-%207.4.2-lab---implement-dhcpv4_fr-FR-1.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-network-wired"></i> Configure DHCPv6 (08.8.5.1)</h3><a href="assets/Ethan%20Georget%20-%2008.8.5.1-lab---configure-dhcpv6_fr-FR.pdf" target="_blank" class="btn-dl">Voir</a></div>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Ethan Georget</h1>
+            <h2>Futur <span class="highlight">Administrateur Réseaux & Cybersécurité</span></h2>
+            <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9;">
+                Étudiant en BTS SIO option SISR | Recherche d'alternance pour <strong>Septembre 2026</strong>
+            </p>
+            <a href="#projects" class="btn">Voir mes projets</a>
+            <a href="assets/cv.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-download"></i> Mon CV</a>
         </div>
+    </header>
 
-        <h3 class="sub-folder"><i class="fas fa-shield-alt"></i> B3 - Cybersécurité</h3>
-        <div class="scroll-list">
-            <div class="item" style="border-left-color: #0ea5e9; background-color: #f0f9ff;"><h3 class="project-title" style="color: #0369a1;"><i class="fas fa-shield-virus" style="color: #0ea5e9;"></i> Mise en œuvre UTM (pfSense, Squid, Snort)</h3><a href="assets/LAB3-B3-UTM.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item" style="border-left-color: #0ea5e9; background-color: #f0f9ff;"><h3 class="project-title" style="color: #0369a1;"><i class="fas fa-fire-alt" style="color: #0ea5e9;"></i> Filtrage et NAT sous pfSense</h3><a href="assets/SISR_LABOFIREWALL.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            
-            <div class="item"><h3 class="project-title"><i class="fas fa-database"></i> Paysage des Données (02.TP01)</h3><a href="assets/Ethan%20Georget%20-%2002.TP01_PaysageDonnees_rev02.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-globe"></i> Exploration Trafic DNS (04.TP4.1.7)</h3><a href="assets/Ethan%20Georget%20-%2004.TP4.1.7_ExplorationTraficDNS_rev02.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-bug"></i> Attaque Base MySQL (04.TP4.2.8)</h3><a href="assets/Ethan%20Georget%20-%2004.TP4.2.8_AttaqueBaseMySQL_rev02.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-file-alt"></i> Lecture Journaux Serveurs (04.TP4.2.9)</h3><a href="assets/Ethan%20Georget%20-%2004.TP4.2.9_LectureJournauxServeur_rev02.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-shield-alt"></i> Mesures Atténuation Menaces (04.TP4.3.7)</h3><a href="assets/Ethan%20Georget%20-%2004.TP4.3.7_MesuresAttnMenaces_rev02.pdf" target="_blank" class="btn-dl">Voir</a></div>
-            <div class="item"><h3 class="project-title"><i class="fas fa-user-lock"></i> Configuration ACLs (06.TP6.2.4)</h3><a href="assets/Ethan%20Georget%20-%2006.TP6.2.4_ACLs_rev02.pdf" target="_blank" class="btn-dl">Voir</a></div>
-        </div>
-
-        <h2 class="category-title" style="margin-top: 80px; border-color: #e11d48;">Lycée (Bac Pro SN)</h2>
-
-        <div class="item" style="border-left-color: #e11d48;">
-            <div>
-                <h3 class="project-title" style="font-size:1.1rem;"><i class="fas fa-laptop-code" style="color: #e11d48;"></i> Mini Projet Terminal</h3>
-                <p style="margin:0; font-size:0.9rem; color:#666; margin-left: 28px;">Analyse et installation d'un système numérique (S.N. R.I.S.C).</p>
+    <section id="about">
+        <div class="about-content">
+            <img src="assets/photo.jpg" alt="Ethan Georget" class="about-img">
+            <div class="about-text">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">À Propos de moi</h2>
+                <p>
+                    Passionné par l'informatique depuis le collège, j'ai orienté mes études vers l'administration des systèmes et des réseaux.
+                    Après un <strong>Bac Pro SN</strong> (Mention Bien), je poursuis en <strong>BTS SIO</strong> option SISR.
+                </p>
+                <p>
+                    Curieux et technique, j'ai acquis de l'expérience grâce à mes stages (Mairie de Meaux, IFAC) sur des environnements réels (VLANs, Active Directory, Supervision).
+                </p>
+                <p style="margin-top: 20px; border-left: 4px solid var(--primary); padding-left: 15px; background: #eef2ff; padding: 15px;">
+                    <strong>Objectif :</strong> Je recherche une entreprise pour une <strong>alternance</strong> à partir de septembre 2026.
+                </p>
             </div>
-            <a href="assets/projet_jo.pdf" target="_blank" class="btn-dl" style="background-color: #e11d48;">Voir le PDF</a>
         </div>
+    </section>
 
-    </div>
+    <section id="skills" style="background-color: white;">
+        <h2 class="section-title">Compétences Techniques</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
+                <h3>Réseau & Infrastructure</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> Configuration Switchs (Cisco)</li>
+                    <li><i class="fas fa-check"></i> VLANs (Data, Voice, Admin)</li>
+                    <li><i class="fas fa-check"></i> Wireshark (Analyse trafic)</li>
+                    <li><i class="fas fa-check"></i> Brassage et Câblage</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-server"></i></div>
+                <h3>Administration Système</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> Windows Server 2016/2022</li>
+                    <li><i class="fas fa-check"></i> Active Directory (GPO, Users)</li>
+                    <li><i class="fas fa-check"></i> Virtualisation (VirtualBox)</li>
+                    <li><i class="fas fa-check"></i> Office 365 (Migration)</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-tools"></i></div>
+                <h3>Supervision & Outils</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check"></i> Eyes Of Network (Nagios)</li>
+                    <li><i class="fas fa-check"></i> Grafana</li>
+                    <li><i class="fas fa-check"></i> GLPI (Ticketing)</li>
+                    <li><i class="fas fa-check"></i> Packet Tracer</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Projets & Réalisations</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3><i class="fas fa-graduation-cap"></i> Projets Scolaires</h3>
+                    <p>Retrouvez ici l'ensemble des projets techniques réalisés durant ma formation.</p>
+                    <div class="tags"><span class="tag">Packet Tracer</span><span class="tag">Virtualisation</span><span class="tag">Réseau</span></div>
+                    <a href="projets.html" class="btn-small">Voir tous mes projets <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3><i class="fas fa-book-open"></i> Veille Technologique</h3>
+                    <p>Sujet : "Les limites juridiques et éthiques imposées aux IA".</p>
+                    <div class="tags"><span class="tag">IA</span><span class="tag">Droit</span><span class="tag">RGPD</span></div>
+                    <a href="assets/veille_ia.pdf" target="_blank" class="btn-small">Lire la synthèse <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3><i class="fas fa-briefcase"></i> Mes Stages</h3>
+                    <p>Accédez aux rapports détaillés de mes expériences à la Mairie de Meaux et à l'IFAC.</p>
+                    <div class="tags"><span class="tag">Rapports</span><span class="tag">Entreprise</span><span class="tag">Missions</span></div>
+                    <a href="stages.html" class="btn-small">Consulter les rapports <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" style="background-color: white;">
+        <h2 class="section-title">Mon Parcours</h2>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <div class="content-box">
+                    <span class="date">JANV. 2026 - MARS 2026</span>
+                    <h3 class="job-title">Stagiaire Informatique (BTS 2ème année)</h3>
+                    <span class="company">Association IFAC</span>
+                    <p>Mise en œuvre de solutions réseau et cybersécurité, administration système.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content-box">
+                    <span class="date">AOÛT 2025</span>
+                    <h3 class="job-title">Renfort Technique (1 mois)</h3>
+                    <span class="company">Association IFAC</span>
+                    <p>Expérience professionnelle estivale en support informatique.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content-box">
+                    <span class="date">JUIN 2025 - JUIL. 2025</span>
+                    <h3 class="job-title">Stagiaire Informatique (BTS 1ère année)</h3>
+                    <span class="company">Association IFAC</span>
+                    <p>Gestion du parc, support utilisateur et interventions réseau.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" style="border-left: 4px solid #1e293b; margin-left: -4px;">
+                <div class="content-box" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+                    <span class="date" style="color: #64748b;">2024 - 2026</span>
+                    <h3 class="job-title">BTS SIO - Option SISR</h3>
+                    <span class="company">Lycée René Descartes (77)</span>
+                    <p>Formation en Solutions d'Infrastructure, Systèmes et Réseaux.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content-box">
+                    <span class="date">OCT. 2023 - FÉV. 2024</span>
+                    <h3 class="job-title">Stagiaire Technicien Informatique (Terminale)</h3>
+                    <span class="company">Association IFAC (92)</span>
+                    <p>Installation switchs Cisco, résolution de conflits IP, brassage de baies et démantèlement d'équipements PABX.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content-box">
+                    <span class="date">OCT. 2022 - JUIN 2023</span>
+                    <h3 class="job-title">Stagiaire DSI (1ère)</h3>
+                    <span class="company">Mairie de Meaux (77)</span>
+                    <p>Administration Active Directory, création d'utilisateurs, migration Office 365, Supervision avec Eyes Of Network (EON).</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content-box">
+                    <span class="date">NOV. 2021 - JUIN 2022</span>
+                    <h3 class="job-title">Stagiaire Informatique (Seconde)</h3>
+                    <span class="company">Association IpSIS (77)</span>
+                    <p>Découverte de l'environnement professionnel informatique et assistance technique de base.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" style="border-left: 4px solid #1e293b; margin-left: -4px;">
+                <div class="content-box" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+                    <span class="date" style="color: #64748b;">2021 - 2024</span>
+                    <h3 class="job-title">BAC PRO SN - Option RISC</h3>
+                    <span class="company">Lycée Saint-Aspais (77)</span>
+                    <p>Réseaux Informatiques et Systèmes Communicants. <strong>Obtenu avec Mention Bien.</strong></p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2 style="color: white; margin-bottom: 20px;">Me Contacter</h2>
+        <div class="social-icons">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=georget.ethan.pro@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/ethan-georget" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/ethan-adm" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.8rem; color: #64748b;">&copy; 2026 Ethan Georget.</p>
+    </footer>
+
 </body>
 </html>

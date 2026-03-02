@@ -50,11 +50,7 @@
         /* --- SECTIONS STANDARDS --- */
         section { padding: 80px 10%; }
         .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 60px;
-            position: relative;
-            padding-bottom: 15px;
+            text-align: center; font-size: 2.2rem; margin-bottom: 60px; position: relative; padding-bottom: 15px;
         }
         .section-title::after {
             content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--primary); border-radius: 2px;
@@ -69,22 +65,51 @@
             border: 5px solid white; background-color: #eee;
         }
 
-        /* --- GRILLES --- */
-        .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .skill-card, .project-card {
+        /* --- COMPÉTENCES --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .skill-card {
             background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             border-top: 4px solid var(--primary); transition: transform 0.3s;
         }
-        .skill-card:hover, .project-card:hover { transform: translateY(-5px); }
+        .skill-card:hover { transform: translateY(-5px); }
         .skill-icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
         .skill-list li { margin-bottom: 10px; display: flex; align-items: center; }
         .skill-list i { color: var(--accent); margin-right: 10px; font-size: 0.8rem; }
 
-        /* --- PROJETS SPECIFIQUE --- */
-        .project-content h3 { margin-bottom: 15px; }
+        /* --- PROJETS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .project-content { padding: 25px; flex: 1; display: flex; flex-direction: column; }
+        .project-content h3 { margin-top: 0; margin-bottom: 15px; color: var(--dark); }
         .tags { margin: 15px 0; }
-        .tag { background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; margin-right: 5px; display: inline-block; margin-bottom: 5px; }
-        .btn-small { margin-top: 15px; display:inline-block; color: var(--primary); font-weight: 600; font-size: 0.9rem; }
+        .tag {
+            background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; 
+            margin-right: 5px; display: inline-block; margin-bottom: 5px;
+        }
+        .btn-small {
+            margin-top: auto;
+            align-self: flex-start;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            position: relative;
+            z-index: 10;
+        }
         .btn-small:hover { color: var(--dark); text-decoration: underline; }
 
         /* --- TIMELINE --- */
@@ -168,7 +193,7 @@
                 <div class="skill-icon"><i class="fas fa-server"></i></div>
                 <h3>Administration Système</h3>
                 <ul class="skill-list">
-                    <li><i class="fas fa-check"></i> Windows Server 2016/2019</li>
+                    <li><i class="fas fa-check"></i> Windows Server 2016/2022</li>
                     <li><i class="fas fa-check"></i> Active Directory (GPO, Users)</li>
                     <li><i class="fas fa-check"></i> Virtualisation (VirtualBox)</li>
                     <li><i class="fas fa-check"></i> Office 365 (Migration)</li>
@@ -220,49 +245,79 @@
     <section id="experience" style="background-color: white;">
         <h2 class="section-title">Mon Parcours</h2>
         <div class="timeline">
+            
+            <div class="timeline-item">
+                <div class="content-box">
+                    <span class="date">JANV. 2026 - MARS 2026</span>
+                    <h3 class="job-title">Stagiaire Informatique (BTS 2ème année)</h3>
+                    <span class="company">Association IFAC</span>
+                    <p>Mise en œuvre de solutions réseau et cybersécurité, administration système.</p>
+                </div>
+            </div>
+
             <div class="timeline-item">
                 <div class="content-box">
                     <span class="date">AOÛT 2025</span>
                     <h3 class="job-title">Renfort Technique (1 mois)</h3>
                     <span class="company">Association IFAC</span>
-                    <p>Expérience professionnelle estivale.</p>
+                    <p>Expérience professionnelle estivale en support informatique.</p>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="content-box">
-                    <span class="date">2024 - PRÉSENT</span>
+                    <span class="date">JUIN 2025 - JUIL. 2025</span>
+                    <h3 class="job-title">Stagiaire Informatique (BTS 1ère année)</h3>
+                    <span class="company">Association IFAC</span>
+                    <p>Gestion du parc, support utilisateur et interventions réseau.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" style="border-left: 4px solid #1e293b; margin-left: -4px;">
+                <div class="content-box" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+                    <span class="date" style="color: #64748b;">2024 - 2026</span>
                     <h3 class="job-title">BTS SIO - Option SISR</h3>
                     <span class="company">Lycée René Descartes (77)</span>
+                    <p>Formation en Solutions d'Infrastructure, Systèmes et Réseaux.</p>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="content-box">
-                    <span class="date">OCT 2023 - FÉV 2024</span>
-                    <h3 class="job-title">Stagiaire Technicien Informatique</h3>
+                    <span class="date">OCT. 2023 - FÉV. 2024</span>
+                    <h3 class="job-title">Stagiaire Technicien Informatique (Terminale)</h3>
                     <span class="company">Association IFAC (92)</span>
-                    <p>Intervention technique : Installation switchs Cisco, résolution conflits IP, brassage.</p>
+                    <p>Installation switchs Cisco, résolution de conflits IP, brassage de baies et démantèlement d'équipements PABX.</p>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="content-box">
-                    <span class="date">OCT 2022 - JUIN 2023</span>
-                    <h3 class="job-title">Stagiaire DSI</h3>
+                    <span class="date">OCT. 2022 - JUIN 2023</span>
+                    <h3 class="job-title">Stagiaire DSI (1ère)</h3>
                     <span class="company">Mairie de Meaux (77)</span>
-                    <p>Gestion Active Directory, Migration Office 365, Supervision EON.</p>
+                    <p>Administration Active Directory, création d'utilisateurs, migration Office 365, Supervision avec Eyes Of Network (EON).</p>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="content-box">
-                    <span class="date">2021 - 2024</span>
+                    <span class="date">NOV. 2021 - JUIN 2022</span>
+                    <h3 class="job-title">Stagiaire Informatique (Seconde)</h3>
+                    <span class="company">Association IpSIS (77)</span>
+                    <p>Découverte de l'environnement professionnel informatique et assistance technique de base.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" style="border-left: 4px solid #1e293b; margin-left: -4px;">
+                <div class="content-box" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+                    <span class="date" style="color: #64748b;">2021 - 2024</span>
                     <h3 class="job-title">BAC PRO SN - Option RISC</h3>
                     <span class="company">Lycée Saint-Aspais (77)</span>
-                    <p>Mention Bien.</p>
+                    <p>Réseaux Informatiques et Systèmes Communicants. <strong>Obtenu avec Mention Bien.</strong></p>
                 </div>
             </div>
+
         </div>
     </section>
 

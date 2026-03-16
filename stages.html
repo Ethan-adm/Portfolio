@@ -11,9 +11,15 @@
         body { font-family: 'Poppins', sans-serif; margin: 0; padding: 40px; background: var(--light); color: var(--text); }
         .container { max-width: 800px; margin: 0 auto; }
         .back-btn { display: inline-block; margin-bottom: 30px; color: var(--primary); text-decoration: none; font-weight: bold; }
-        h1 { margin-bottom: 30px; color: var(--dark); }
-        .item { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #e11d48; }
-        .btn-dl { background: var(--dark); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; }
+        .back-btn:hover { text-decoration: underline; }
+        h1 { margin-bottom: 40px; color: var(--dark); text-align: center; }
+        .item { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #e11d48; transition: transform 0.2s; }
+        .item:hover { transform: translateX(5px); }
+        .item-info h3 { margin: 0 0 5px 0; color: var(--dark); }
+        .item-info p { margin: 0 0 12px 0; font-size: 0.9rem; color: #64748b; }
+        .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag { background: #fee2e2; color: #e11d48; padding: 4px 10px; border-radius: 15px; font-size: 0.75rem; font-weight: 600; }
+        .btn-dl { background: var(--dark); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; white-space: nowrap; margin-left: 20px; transition: 0.3s; }
         .btn-dl:hover { background: #e11d48; }
     </style>
 </head>
@@ -23,19 +29,45 @@
         <h1><i class="fas fa-briefcase"></i> Mes Rapports de Stage</h1>
 
         <div class="item">
-            <div>
-                <h3 style="margin:0 0 5px 0;">Association IFAC (92)</h3>
-                <p style="margin:0; font-size:0.9rem;">Technicien Informatique (Oct 2023 - Fév 2024)</p>
+            <div class="item-info">
+                <h3>Association IFAC (Siège)</h3>
+                <p><strong>BTS SIO (2ème année)</strong> • 26 Janvier au 20 Mars 2026</p>
+                <p>Déploiement centralisé FortiSwitch via Cloud, configuration Cisco SG300, brassage et résolution de conflits IP / VLAN.</p>
+                <div class="tags">
+                    <span class="tag">Fortinet Cloud</span>
+                    <span class="tag">Cisco SG300</span>
+                    <span class="tag">VLAN</span>
+                </div>
             </div>
-            <a href="assets/rapport_ifac.pdf" target="_blank" class="btn-dl">Lire le rapport</a>
+            <a href="assets/Stage%20Ethan%20GEORGET%202026.pdf" target="_blank" class="btn-dl"><i class="fas fa-file-pdf"></i> Lire le rapport</a>
         </div>
 
         <div class="item">
-            <div>
-                <h3 style="margin:0 0 5px 0;">Mairie de Meaux (77)</h3>
-                <p style="margin:0; font-size:0.9rem;">Stagiaire DSI (Oct 2022 - Juin 2023)</p>
+            <div class="item-info">
+                <h3>Association IFAC (92)</h3>
+                <p><strong>Bac Pro SN (Terminale)</strong> • Octobre 2023 à Février 2024</p>
+                <p>Intervention technique réseau : Installation switchs Cisco, résolution conflits IP, brassage et démantèlement PABX.</p>
+                <div class="tags">
+                    <span class="tag">Cisco</span>
+                    <span class="tag">Brassage</span>
+                    <span class="tag">Réseau Local</span>
+                </div>
             </div>
-            <a href="assets/rapport_meaux.pdf" target="_blank" class="btn-dl">Lire le rapport</a>
+            <a href="assets/rapport_ifac.pdf" target="_blank" class="btn-dl"><i class="fas fa-file-pdf"></i> Lire le rapport</a>
+        </div>
+
+        <div class="item">
+            <div class="item-info">
+                <h3>Mairie de Meaux (77)</h3>
+                <p><strong>Bac Pro SN (1ère)</strong> • Octobre 2022 à Juin 2023</p>
+                <p>Administration Active Directory, création de comptes, migration Office 365 et supervision (Eyes Of Network).</p>
+                <div class="tags">
+                    <span class="tag">Active Directory</span>
+                    <span class="tag">Office 365</span>
+                    <span class="tag">Supervision (EON)</span>
+                </div>
+            </div>
+            <a href="assets/rapport_meaux.pdf" target="_blank" class="btn-dl"><i class="fas fa-file-pdf"></i> Lire le rapport</a>
         </div>
 
     </div>

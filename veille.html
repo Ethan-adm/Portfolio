@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Veille IA - Ethan Georget</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        .glass-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        .gradient-text { background: linear-gradient(90deg, #2563eb, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tech-img { border-radius: 8px; border: 1px solid #e2e8f0; width: 100%; height: auto; max-height: 220px; object-fit: cover; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <header class="max-w-7xl mx-auto mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h1 class="text-4xl font-bold text-slate-800 tracking-tight">Dashboard <span class="gradient-text">Veille IA Activa</span></h1>
+            <p class="text-slate-500 mt-2">Ethan Georget | SISR | IFAC | Ma veille juridique & éthique appliquée sur le terrain.</p>
+        </div>
+        <div class="flex gap-3">
+            <a href="https://www.pearltrees.com/ethan_adm" target="_blank" class="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition font-medium shadow-lg shadow-blue-200">
+                <i class="fa-solid fa-share-nodes mr-2"></i>Voir mon Pearltrees
+            </a>
+            <a href="index.html" class="px-5 py-2 bg-slate-200 text-slate-700 rounded-full hover:bg-slate-300 transition font-medium">
+                <i class="fa-solid fa-arrow-left mr-2"></i>Retour Portfolio
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-4 gap-6">
+        
+        <div class="xl:col-span-1 space-y-6">
+            <div class="glass-card p-6">
+                <h2 class="text-lg font-bold text-slate-700 mb-4">Focus Thématique</h2>
+                <canvas id="veilleChart" height="250"></canvas>
+            </div>
+            <div class="glass-card p-6 border-l-4 border-blue-500 bg-blue-50">
+                <h3 class="font-bold text-blue-900"><i class="fa-solid fa-shield-halved mr-2 text-blue-500"></i>Responsabilité SISR</h3>
+                <p class="text-sm text-blue-800 mt-2">"L'infrastructure réseau est le premier rempart technique pour garantir la conformité éthique et juridique face à l'IA."</p>
+            </div>
+        </div>
+
+        <div class="xl:col-span-3 space-y-10">
+
+            <section>
+                <h2 class="text-2xl font-semibold text-slate-800 mb-5 flex items-center gap-3"><i class="fa-solid fa-building text-slate-400"></i>Mes Activités de Stage (IFAC 2026)</h2>
+                <div class="space-y-6">
+                    
+                    <div class="glass-card p-6 hover:shadow-md transition-shadow border-l-4 border-indigo-500">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="p-3 bg-indigo-100 text-indigo-600 rounded-xl"><i class="fa-solid fa-cloud"></i></span>
+                            <h3 class="text-xl font-bold text-slate-800">Supervision Cloud Centralisée & Data Privacy</h3>
+                        </div>
+                        <div class="grid md:grid-cols-5 gap-6">
+                            <div class="md:col-span-2 space-y-4">
+                                <p class="text-slate-700">Déploiement centralisé via <strong>FortiGate Cloud</strong> et Security Fabric pour une visibilité totale.</p>
+                                <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
+                                    <h4 class="text-xs font-bold text-indigo-500 uppercase tracking-widest">Lien Veille</h4>
+                                    <a href="https://www.pearltrees.com/ethan_adm" target="_blank" class="text-sm font-semibold text-indigo-700 hover:underline block mt-1">📄 Sécurité et Libertés Publiques →</a>
+                                    <p class="text-xs text-indigo-600 mt-2">La centralisation cloud exige des garanties de souveraineté des données réseau face aux plateformes tierces.</p>
+                                </div>
+                            </div>
+                            <div class="md:col-span-3">
+                                <img src="assets/forticloud.png" alt="Dashboard FortiGate Cloud" class="tech-img" onerror="this.src='https://via.placeholder.com/600x200?text=Image+FortiCloud+Introuvable'" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="p-3 bg-blue-100 text-blue-600 rounded-xl"><i class="fa-solid fa-network-wired"></i></span>
+                            <h3 class="text-xl font-bold text-slate-800">Segmentation Réseau & Gouvernance</h3>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <p class="text-slate-700">Configuration de <strong>VLANs 3 (Pro) et 4 (Public)</strong> pour isoler les flux sur switchs Cisco et Fortinet.</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                                <h4 class="text-xs font-bold text-blue-500 uppercase tracking-widest">Lien Veille</h4>
+                                <a href="https://www.pearltrees.com/ethan_adm" target="_blank" class="text-sm font-semibold text-blue-700 hover:underline block mt-1">📄 Régulation et Conformité des Entreprises →</a>
+                                <p class="text-xs text-blue-600 mt-2">Isolement des outils IA grand public (VLAN 4) pour protéger les données critiques de l'association (VLAN 3).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 hover:shadow-md transition-shadow border-l-4 border-orange-400">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="p-3 bg-orange-100 text-orange-600 rounded-xl"><i class="fa-solid fa-user-gear"></i></span>
+                            <h3 class="text-xl font-bold text-slate-800">L'Humain face au défaut de l'Automatisation</h3>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Problème terrain</h4>
+                                <p class="text-slate-700 mt-1">Échec DHCP sur le VLAN 4 : basculement manuel en <strong>IP Fixe</strong> pour garantir la continuité de service.</p>
+                            </div>
+                            <div class="bg-orange-50 p-4 rounded-lg border border-orange-100">
+                                <h4 class="text-xs font-bold text-orange-500 uppercase tracking-widest">Lien Veille</h4>
+                                <a href="https://www.pearltrees.com/ethan_adm" target="_blank" class="text-sm font-semibold text-orange-700 hover:underline block mt-1">📄 Contrôler l'incontrôlable (Éthique) →</a>
+                                <p class="text-xs text-orange-600 mt-2">L'obligation de garder une supervision humaine capable de reprendre la main quand l'automatisation réseau échoue.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold text-slate-800 mb-5 flex items-center gap-3"><i class="fa-solid fa-graduation-cap text-slate-400"></i>Mes TPs de Cours (SISR)</h2>
+                <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-6">
+                    
+                    <div class="glass-card p-6 border-l-4 border-emerald-500 hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="p-3 bg-emerald-100 text-emerald-600 rounded-xl"><i class="fa-solid fa-lock"></i></span>
+                            <h3 class="text-lg font-bold text-slate-800">Sécurisation Switch Cisco (L2)</h3>
+                        </div>
+                        <img src="assets/cisco_security.png" alt="Cisco Port Security" class="tech-img mb-4" onerror="this.src='https://via.placeholder.com/600x200?text=Ajouter+cisco_security.png'" />
+                        <div class="space-y-4">
+                            <p class="text-sm text-slate-700">Mise en place de <strong>DHCP Snooping</strong> et <strong>Port Security</strong> contre les attaques.</p>
+                            <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-100">
+                                <h4 class="text-xs font-bold text-emerald-500 uppercase tracking-widest">Lien Veille</h4>
+                                <a href="https://www.pearltrees.com/ethan_adm" target="_blank" class="text-sm font-semibold text-emerald-700 hover:underline block mt-1">📄 L'IA en cybersécurité →</a>
+                                <p class="text-xs text-emerald-600 mt-2">Contrer les attaques automatisées (brute-force L2) générées par des IA malveillantes via des sécurités robustes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 border-l-4 border-rose-500 hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="p-3 bg-rose-100 text-rose-600 rounded-xl"><i class="fa-solid fa-key"></i></span>
+                            <h3 class="text-lg font-bold text-slate-800">VPN SNS (IPsec Site-à-Site)</h3>
+                        </div>
+                        <img src="assets/config_vpn.png" alt="Configuration VPN" class="tech-img mb-4" onerror="this.src='https://via.placeholder.com/600x200?text=Ajouter+config_vpn.png'" />
+                        <div class="space-y-4">
+                            <p class="text-sm text-slate-700">Chiffrement des flux inter-sites via des tunnels <strong>IPsec (IKEv2)</strong>.</p>
+                            <div class="bg-rose-50 p-4 rounded-lg border border-rose-100">
+                                <h4 class="text-xs font-bold text-rose-500 uppercase tracking-widest">Lien Veille</h4>
+                                <a href="https://www.pearltrees.com/ethan_adm" target="_blank" class="text-sm font-semibold text-rose-700 hover:underline block mt-1">📄 Justice et Métiers du Droit →</a>
+                                <p class="text-xs text-rose-600 mt-2">Le chiffrement garantit la confidentialité des données face aux interceptions de masse automatisées.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 border-l-4 border-amber-500 hover:shadow-md transition-shadow lg:col-span-2">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="p-3 bg-amber-100 text-amber-600 rounded-xl"><i class="fa-solid fa-server"></i></span>
+                            <h3 class="text-xl font-bold text-slate-800">Déploiement AD / GPO (Scripting)</h3>
+                        </div>
+                        <div class="grid md:grid-cols-5 gap-6">
+                             <div class="md:col-span-2 space-y-4">
+                                <p class="text-sm text-slate-700">Création automatisée d'utilisateurs via <strong>PowerShell</strong> et déploiement de <strong>GPO</strong>.</p>
+                                <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">
+                                    <h4 class="text-xs font-bold text-amber-500 uppercase tracking-widest">Lien Veille</h4>
+                                    <a href="https://www.pearltrees.com/ethan_adm" target="_blank" class="text-sm font-semibold text-amber-700 hover:underline block mt-1">📄 Identité Éthique & Traçabilité →</a>
+                                    <p class="text-xs text-amber-600 mt-2">L'automatisation via script montre comment on gérera demain les identités des agents IA dans un Active Directory.</p>
+                                </div>
+                            </div>
+                             <div class="md:col-span-3">
+                                <img src="assets/script_ad.png" alt="Script PowerShell AD" class="tech-img" onerror="this.src='https://via.placeholder.com/600x200?text=Ajouter+script_ad.png'" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        const ctx = document.getElementById('veilleChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Responsabilité Éthique', 'Data Privacy (GDPR)', 'Cybersécurité', 'IA Act / Régulation', 'Frontières du Droit', 'Impact Social'],
+                datasets: [{
+                    label: 'Focus Veille',
+                    data: [80, 95, 85, 90, 75, 60],
+                    fill: true,
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: 'rgb(59, 130, 246)',
+                    pointBackgroundColor: 'rgb(59, 130, 246)',
+                }]
+            },
+            options: {
+                scales: { r: { suggestMin: 0, suggestMax: 100 } },
+                plugins: { legend: { display: false } }
+            }
+        });
+    </script>
+</body>
+</html>

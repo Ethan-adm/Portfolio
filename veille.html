@@ -18,7 +18,7 @@
 
     <header class="max-w-7xl mx-auto mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-            <h1 class="text-4xl font-bold text-slate-800 tracking-tight">Dashboard <span class="gradient-text">Veille IA Activa</span></h1>
+            <h1 class="text-4xl font-bold text-slate-800 tracking-tight">Dashboard Veille <span class="gradient-text">Intelligence Artificielle (IA)</span></h1>
             <p class="text-slate-500 mt-2">Ethan Georget | SISR | Ma veille juridique & éthique appliquée sur le terrain.</p>
         </div>
         <div class="flex gap-3">
@@ -59,7 +59,7 @@
                         </div>
                         <div class="grid md:grid-cols-5 gap-6">
                             <div class="md:col-span-2 space-y-4">
-                                <p class="text-slate-700">Déploiement centralisé via <strong>FortiGate Cloud</strong> et Security Fabric pour une visibilité totale.</p>
+                                <p class="text-slate-700">Déploiement centralisé via <strong>Forticloud</strong>. Supervision des flux d'IA et protection avancée de l'infrastructure.</p>
                                 <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
                                     <h4 class="text-xs font-bold text-indigo-500 uppercase tracking-widest">Lien Veille</h4>
                                     <a href="https://www.pearltrees.com/ethan_adm/l-ia-act/id102955722#item787472711" target="_blank" class="text-sm font-semibold text-indigo-700 hover:underline block mt-1">📄 Sécurité et Libertés Publiques →</a>
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="md:col-span-3">
-                                <img src="assets/Forticloud_sreen.png" alt="Dashboard FortiGate Cloud" class="tech-img" onerror="this.src='https://via.placeholder.com/600x200?text=Image+FortiCloud+Introuvable'" />
+                                <img src="assets/Forticloud_sreen.png" alt="Dashboard Forticloud" class="tech-img" onerror="this.src='https://via.placeholder.com/600x200?text=Image+Forticloud+Introuvable'" />
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Problème terrain</h4>
-                                <p class="text-slate-700 mt-1">Échec DHCP sur le VLAN 4 : basculement manuel en <strong>IP Fixe</strong> pour garantir la continuity de service.</p>
+                                <p class="text-slate-700 mt-1">Échec DHCP sur le VLAN 4 : basculement manuel en <strong>IP Fixe</strong> pour garantir la continuité de service.</p>
                             </div>
                             <div class="bg-orange-50 p-4 rounded-lg border border-orange-100">
                                 <h4 class="text-xs font-bold text-orange-500 uppercase tracking-widest">Lien Veille</h4>
@@ -190,16 +190,19 @@
             options: {
                 maintainAspectRatio: false,
                 layout: {
-                    padding: 25 
+                    // AUGMENTATION DU PADDING POUR ÉVITER QUE LES MOTS SOIENT COUPÉS
+                    padding: 35 
                 },
                 scales: { 
                     r: { 
                         suggestMin: 0, 
                         suggestMax: 100,
                         pointLabels: {
+                            // AJUSTEMENT DE LA FONT ET DU PADDING DES LABELS
                             font: {
-                                size: 11
-                            }
+                                size: 10
+                            },
+                            padding: 10
                         }
                     } 
                 },
